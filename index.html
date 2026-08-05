@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Андрей Трабл</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-window">
+            <h2 class="modal-title">ВЫРВАТЬ</h2>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" id="btnNo">МЕНЯ ИЗ СЕРДЦА ❤️</button>
+                <button class="modal-btn modal-btn-primary" id="btnYes">ИЗ МЕНЯ СЕРДЦЕ 💔</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="errorOverlay" style="display: none;">
+        <div class="modal-window error-window">
+            <h2 class="modal-title">не получится, зайчонок ))0)</h2>
+            <button class="modal-btn modal-btn-ok" id="btnOk">ОК</button>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="burger" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#songs">Песни</a></li>
+                    <li><a href="index.html#clips">Клипы</a></li>
+                    <li><a href="#studio">Студия</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-glow" id="heroGlow"></div>
+    </section>
+
+    <div class="main-content">
+        <div class="hero-wrapper">
+            <div class="hero-content container">
+                <img src="img/logo.png" alt="ANDREY TRABL" class="hero-logo" />
+                <a href="https://vk.com/andreytrabl" target="_blank" class="cta-button">
+                    Вступить в тайное сообщество
+                </a>
+            </div>
+            <div class="hero-scroll">
+                <span></span>
+            </div>
+        </div>
+
+        <section class="songs" id="songs">
+            <div class="container">
+                <h2 class="songs-title reveal">ПЕСНИ</h2>
+
+                <div class="songs-grid">
+                    <a href="assets/songs/mayak.html" class="song-card reveal" style="--i: 0" data-year="2022">
+                        <div class="song-cover-wrap">
+                            <img src="assets/covers/mayak.png" alt="Обложка" class="song-cover" />
+                            <span class="play-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">WillyWonnka feat. Андрей Трабл</p>
+                            <p class="song-title">Маяк</p>
+                            <div class="song-tags">
+                                <span class="tag-chip tag-chip-year">2022</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="assets/songs/girlyandy.html" class="song-card reveal" style="--i: 10" data-year="2016">
+                        <div class="song-cover-wrap">
+                            <img src="assets/covers/girlyandy.png" alt="Обложка" class="song-cover" />
+                            <span class="play-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">Андрей Трабл</p>
+                            <p class="song-title">Гирлянды</p>
+                            <div class="song-tags">
+                                <span class="tag-chip tag-chip-year">2016</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="assets/songs/glavy.html" class="song-card reveal" style="--i: 11" data-year="2016">
+                        <div class="song-cover-wrap">
+                            <img src="assets/covers/glavy.png" alt="Обложка" class="song-cover" />
+                            <span class="play-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">Андрей Трабл feat. Илья SLASH</p>
+                            <p class="song-title">Главы</p>
+                            <div class="song-tags">
+                                <span class="tag-chip tag-chip-year">2016</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="clips" id="clips">
+            <div class="container">
+                <h2 class="clips-title reveal">КЛИПЫ</h2>
+                <div class="clips-grid">
+                    <div class="clip-item reveal" style="--i: 0">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-2000529938&id=99529938&hash=4172f89cae14e5af&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                        <p class="clip-artist">Андрей Трабл</p>
+                        <p class="clip-title">Дело нескольких минут</p>
+                    </div>
+                    <div class="clip-item reveal" style="--i: 3">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-2000490483&id=101490483&hash=f2315891fa68d9fa&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                        <p class="clip-artist">Андрей Трабл</p>
+                        <p class="clip-title">Бенефис</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="studio" id="studio">
+            <div class="container">
+                <h2 class="clips-title reveal">СТУДИЯ</h2>
+                <div class="studio-content reveal" style="--i: 1">
+                    <img src="img/studio.png" alt="Артель — студия звукозаписи" class="studio-logo" />
+                    <div class="studio-text">
+                        <p>Песни, музыка, звук без кредитов, SMS и регистрации</p>
+                        <div class="studio-buttons">
+                            <a href="https://artel-sound.ru/?utm_source=at" target="_blank" class="studio-cta studio-cta-primary">тык</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contacts" id="contacts">
+            <div class="container">
+                <h2 class="contacts-title reveal">КОНТАКТЫ</h2>
+                <div class="contacts-grid reveal" style="--i: 1">
+                    <a href="mailto:andreytrabl@mail.ru" class="contact-card">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">andreytrabl@mail.ru</span>
+                    </a>
+                     <a href="https://vk.ru/andreytrabl" target="_blank" class="contact-card">
+                        <span class="contact-label">VK</span>
+                        <span class="contact-value">@andreytrabl</span>
+                    </a>
+                    <a href="https://instagram.com/andreytrabl" target="_blank" class="contact-card">
+                        <span class="contact-label">*Instagram</span>
+                        <span class="contact-value">@andreytrabl</span>
+                    </a>
+                    <a href="https://youtube.com/@andreytrabl" target="_blank" class="contact-card">
+                        <span class="contact-label">YouTube</span>
+                        <span class="contact-value">@andreytrabl</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container footer-container">
+                <p class="footer-copy"> *Instagram и Facebook признаны экстремистскими организациями и запрещены на территории РФ.</p>
+                <p class="footer-copy">&copy; 2026 Андрей Трабл. Все права защищены.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const burger = document.getElementById('burgerBtn');
+        const nav = document.querySelector('.main-nav');
+        burger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                nav.classList.remove('open');
+            });
+        });
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const errorOverlay = document.getElementById('errorOverlay');
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const btnOk = document.getElementById('btnOk');
+
+        const modalShown = sessionStorage.getItem('modalShown');
+
+        if (!modalShown) {
+            modalOverlay.style.display = 'flex';
+            errorOverlay.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            sessionStorage.setItem('modalShown', 'true');
+        } else {
+            modalOverlay.style.display = 'none';
+            errorOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        btnYes.addEventListener('click', function() {
+            modalOverlay.style.display = 'none';
+            errorOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+
+        btnNo.addEventListener('click', function() {
+            modalOverlay.style.display = 'none';
+            errorOverlay.style.display = 'flex';
+        });
+
+        btnOk.addEventListener('click', function() {
+            errorOverlay.style.display = 'none';
+            modalOverlay.style.display = 'flex';
+        });
+
+        errorOverlay.addEventListener('click', function(e) {
+            if (e.target === errorOverlay) {
+                errorOverlay.style.display = 'none';
+                modalOverlay.style.display = 'flex';
+            }
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        const heroGlow = document.getElementById('heroGlow');
+        if (heroGlow && window.matchMedia('(pointer: fine)').matches) {
+            window.addEventListener('mousemove', (e) => {
+                heroGlow.style.setProperty('--mx', e.clientX + 'px');
+                heroGlow.style.setProperty('--my', e.clientY + 'px');
+            });
+        }
+
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
