@@ -282,6 +282,36 @@ ul {
     animation: heroFadeUp 1s ease both;
 }
 
+/* ===== КНОПКИ СТРИМИНГОВ НА ГЛАВНОЙ ===== */
+.hero-services {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0 30px;
+}
+
+.hero-services a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.hero-services a:hover {
+    transform: scale(1.1);
+}
+
+.hero-services img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.hero-services a:hover img {
+    filter: brightness(1);
+}
+
 .cta-button {
     display: inline-block;
     font-family: 'Benzin Bold', sans-serif;
@@ -297,7 +327,7 @@ ul {
     position: relative;
     overflow: hidden;
     animation: heroFadeUp 1s ease 0.2s both;
-    border-radius: 50px; /* ← скругление добавлено */
+    border-radius: 50px;
 }
 
 .cta-button::before {
@@ -1062,7 +1092,6 @@ ul {
 }
 
 @media (max-width: 768px) {
-    /* Бургер показываем справа, там же выезжает меню */
     .burger {
         display: flex;
     }
@@ -1191,6 +1220,13 @@ ul {
     .hero-content {
         padding: 0;
     }
+    .hero-services img {
+        width: 40px;
+        height: 40px;
+    }
+    .hero-services {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1277,6 +1313,13 @@ ul {
     .hero-wrapper {
         padding: 80px 15px 20px;
     }
+    .hero-services img {
+        width: 36px;
+        height: 36px;
+    }
+    .hero-services {
+        gap: 12px;
+    }
 }
 
 @media (max-width: 360px) {
@@ -1314,6 +1357,13 @@ ul {
     .hero-wrapper {
         padding: 80px 10px 15px;
     }
+    .hero-services img {
+        width: 32px;
+        height: 32px;
+    }
+    .hero-services {
+        gap: 10px;
+    }
 }
 
 .modal-overlay {
@@ -1334,8 +1384,8 @@ ul {
     background: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    padding: 30px 24px 24px; /* было 50px 40px 40px — уменьшено */
-    max-width: 320px; /* было 500px */
+    padding: 30px 24px 24px;
+    max-width: 320px;
     width: 100%;
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 60px rgba(var(--accent-rgb), 0.08);
@@ -1356,26 +1406,26 @@ ul {
 
 .modal-title {
     font-family: 'Benzin Extra Bold', sans-serif;
-    font-size: 1.7rem; /* было 2.8rem */
+    font-size: 1.7rem;
     text-transform: uppercase;
-    letter-spacing: 4px; /* было 6px */
+    letter-spacing: 4px;
     color: #ffffff;
-    margin-bottom: 24px; /* было 40px */
+    margin-bottom: 24px;
     line-height: 1.2;
 }
 
 .modal-buttons {
     display: flex;
     flex-direction: row;
-    gap: 10px; /* было 12px */
+    gap: 10px;
 }
 
 .modal-btn {
     font-family: 'Benzin Bold', sans-serif;
-    font-size: 0.65rem; /* было 1rem */
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px; /* было 2px */
-    padding: 10px 14px; /* было 16px 20px */
+    letter-spacing: 1.5px;
+    padding: 10px 14px;
     border: 2px solid #ffffff;
     border-radius: 50px;
     background: #ffffff;
@@ -1391,7 +1441,7 @@ ul {
 }
 
 .error-window .modal-title {
-    font-size: 1.3rem; /* было 2rem */
+    font-size: 1.3rem;
     letter-spacing: 3px;
     color: #ff6b6b;
     margin-bottom: 20px;
@@ -1402,7 +1452,7 @@ ul {
     background: transparent;
     color: #ff6b6b;
     flex: none;
-    max-width: 120px; /* было 200px */
+    max-width: 120px;
     margin: 0 auto;
 }
 
