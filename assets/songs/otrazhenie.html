@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nemelodyon — Андрей Трабл</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+
+        .song-lyrics {
+            max-width: 100% !important;
+            text-align: left !important;
+            padding: 0 20px !important;
+            margin: 0 !important;
+            line-height: 1.4;
+        }
+        .song-lyrics p {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .back-button {
+            display: inline-block;
+            font-family: 'Benzin Bold', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            color: rgba(255,255,255,0.7);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .back-button:hover {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        .song-page .container {
+            position: relative;
+        }
+        .navigation-buttons {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .close-song {
+            position: static !important;
+            font-size: 2.2rem;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            line-height: 1;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .close-song:hover {
+            color: #ffffff;
+        }
+
+        .sub-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .sub-tab-btn {
+            font-family: 'Benzin Bold', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+        }
+        .sub-tab-btn:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .sub-tab-btn.active {
+            color: #ffffff;
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .sub-tab-panel {
+            display: none;
+        }
+        .sub-tab-panel.active {
+            display: block;
+        }
+
+        .track-credits {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 3px solid rgba(255, 255, 255, 0.2);
+        }
+        .track-credits p {
+            font-family: 'Benzin Regular', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+        .credit-label {
+            display: inline-block;
+            min-width: 100px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+        .track-credits a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: border-color 0.3s ease;
+        }
+        .track-credits a:hover {
+            border-color: #ffffff;
+        }
+
+        .song-info-extras {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .release-date {
+            font-family: 'Benzin Bold', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .press-release {
+            font-family: 'Benzin Regular', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .video-clips h3 {
+            font-family: 'Benzin Bold', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .video-grid iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 8px;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .navigation-buttons {
+                right: 10px;
+                gap: 5px;
+            }
+            .close-song {
+                font-size: 1.8rem;
+            }
+            .song-lyrics {
+                padding: 0 10px !important;
+            }
+            .sub-tab-btn {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .track-credits {
+                padding: 12px 15px;
+            }
+            .credit-label {
+                min-width: 80px;
+            }
+        }
+        @media (max-width: 480px) {
+            .close-song {
+                font-size: 1.5rem;
+            }
+            .sub-tab-btn {
+                font-size: 0.65rem;
+                padding: 3px 10px;
+            }
+            .track-credits p {
+                font-size: 0.8rem;
+            }
+            .credit-label {
+                min-width: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../../index.html">Главная</a></li>
+                    <li><a href="../../index.html#songs">Песни</a></li>
+                    <li><a href="../../index.html#clips">Клипы</a></li>
+                    <li><a href="#studio">Студия</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="burger" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="song-page" style="display: block; padding-top: 120px;">
+        <div class="container">
+            <div class="navigation-buttons">
+                <a href="../../index.html" class="close-song">✕</a>
+            </div>
+
+            <div class="song-page-tabs">
+                <button class="song-tab-btn active" data-tab="listen">СЛУШАТЬ</button>
+                <button class="song-tab-btn" data-tab="text">ТЕКСТ</button>
+            </div>
+
+            <div class="song-page-content">
+                <div class="song-tab-panel active" data-tab="listen">
+                    <div class="song-detail">
+                        <img src="../../assets/covers/nemelodyon.png" alt="Nemelodyon" class="song-detail-cover" />
+                        <p class="song-detail-artist">Андрей Трабл</p>
+                        <p class="song-detail-title">Nemelodyon</p>
+                        <div class="song-services">
+                            <a href="https://music.yandex.ru/album/15682740" target="_blank" title="Яндекс Музыка">
+                                <img src="../../assets/icons/yandexmusic.png" alt="Яндекс Музыка" />
+                            </a>
+                            <a href="https://vk.ru/audio_playlist-2000616846_28616846" target="_blank" title="VK Music">
+                                <img src="../../assets/icons/vkmusic.png" alt="VK Music" />
+                            </a>
+                            <a href="https://zvuk.com/release/51955388" target="_blank" title="Звук">
+                                <img src="../../assets/icons/zvuk.png" alt="Звук" />
+                            </a>
+                            <a href="https://mts-music-spo.onelink.me/sKFX/ufllkzpm" target="_blank" title="МТС Музыка">
+                                <img src="../../assets/icons/kionmusic.png" alt="KION MUSIC" />
+                            </a>
+                            <a href="https://music.youtube.com/playlist?list=PLKx2g6oksyXKiPiP2DnEd5cURaaEczSHZ" target="_blank" title="YouTube Music">
+                                <img src="../../assets/icons/youtubemusic.png" alt="YouTube Music" />
+                            </a>
+                            <a href="https://music.apple.com/ru/album/nemelodyon-ep/6795123146" target="_blank" title="Apple Music">
+                                <img src="../../assets/icons/applemusic.png" alt="Apple Music" />
+                            </a>
+                            <a href="https://open.spotify.com/album/2SjqgHYcxKeL1Kep6IICoF?si=DivbuuVISca6cLcNW2evnw" target="_blank" title="Spotify">
+                                <img src="../../assets/icons/spotify.png" alt="Spotify" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-tab-panel" data-tab="text">
+                    <div class="sub-tabs">
+                        <button class="sub-tab-btn active" data-track="1">Betelgeuse</button>
+                        <button class="sub-tab-btn" data-track="2">Emma feat. Саша FRG</button>
+                        <button class="sub-tab-btn" data-track="3">Heroes for Hire</button>
+                        <button class="sub-tab-btn" data-track="4">Fusion</button>
+                        <button class="sub-tab-btn" data-track="5">Burton feat. Canterville</button>
+                    </div>
+
+                    <div class="sub-tab-panel active" data-track="1">
+                        <div class="track-credits">
+                            <p><span class="credit-label">Текст:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Музыка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Запись:</span> <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a></p>
+                            <p><span class="credit-label">Сведение:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Мастеринг:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Обложка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                        </div>
+                        <div class="song-lyrics">
+                            <p>
+Ты, вроде, сошла с ума,
+когда со мной умерла.
+Я знаю, ты не сама —
+это я тебя оторвал.
+В мире, что ты ещё не видела,
+забудь слово "боюсь".
+Добро пожаловать, Лидия!
+Это твой Битлджус!
+
+Я долго смотрел на нравы, но, думал, не хватит духа
+оставить после — отравы для здешних вонючих кухонь.
+Я знаю, что вы желали, когда внутри всё потухло,
+но вижу: в небе — журавль, в руках — чужая кукуха.
+Сколько листов я уже запорол, что написаны пером лебедей да ворон?
+Я пытался вырубить их топором (блядей, фен, людей, метро),
+но всё это не то. Сесть как Кот бы в паром.
+Ведь мне душно и тесно порой:
+хочу выйти из себя, только не помню пароль.
+Тут постоянно кто-то переводит время, потому потерян —
+это не закон, но я знаю языков.
+Меня не пугают и сотни лап
+при виде ёбаных ламп,
+и ты бы так не смогла.
+Я прячу свои глаза от тебя, но выходит,
+и ты палишь прямо в меня снова, будто Кортни Лав.
+Знаешь, видно, я еду снова, так что закрывай меня.
+Лекарства, к слову, нет или просто иссякли знания.
+Мне же привычно в соло провожать слезами здания.
+Не скажешь "до свидания", лишь заклинание.
+
+Ты, вроде, сошла с ума,
+когда со мной умерла.
+Я знаю, ты не сама —
+это я тебя оторвал.
+В мире, что ты ещё не видела,
+забудь слово "боюсь".
+Добро пожаловать, Лидия!
+Это твой Битлджус!
+
+Though I know I should be wary
+Still I venture someplace scary
+Ghoustly haunting I turn loose...
+Beetlejuice, Beetlejuice, Beetlejuice!
+
+Ты, вроде, сошла с ума,
+когда со мной умерла.
+Я знаю, ты не сама —
+это я тебя оторвал.
+В мире, что ты ещё не видела,
+забудь слово "боюсь".
+Добро пожаловать, Лидия!
+Это твой Битлджус!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sub-tab-panel" data-track="2">
+                        <div class="track-credits">
+                            <p><span class="credit-label">Текст:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a>, <a href="https://vk.ru/sashafrg" target="_blank">Саша FRG</a></p>
+                            <p><span class="credit-label">Музыка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Запись:</span> <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a>, <a href="https://vk.ru/sashafrg" target="_blank">Саша FRG</a></p>
+                            <p><span class="credit-label">Сведение:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Мастеринг:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                        </div>
+                        <div class="song-lyrics">
+                            <p>
+Сердечко прямо на рельсах ярко пылает.
+Пей свою Пина коладу, пока я жду твой поезд,
+что, видимо, скоро прокатит по полной меня.
+Вырежи грустный смайл на камне — самое то для эпитафий.
+Панцирь треснул у черепахи, мир под тремя китами не катит.
+Рыбный день, к тому же, сегодня в твоём вагон-ресторане.
+Мы, видимо, так мало друг другу сказали.
+Знаешь, мы так мало друг другу сказали-сказали-сказали…
+На перроне так пусто.
+Я застыл, как камень, пока ты встаёшь на рельсы
+для резкого спуска.
+Я забыл, что мы летать не умеем.
+Мы не были так одиноки, даже когда я проснулся
+после смерти на остановке, где ждал Эмму.
+Она скоро заберёт меня, осталось подождать чуть-чуть,
+но по моей «Тёмной Башне» катит Чарли Чух-Чух.
+
+Я знаю, что ты не спасёшь меня,
+и распадаюсь под этот мотив.
+Ты знаешь, что всё это — ложь, и я
+слышу под рёбрами локомотив.
+
+Я жду состав, потому как знаю всё наперёд.
+И труда не составит добавить новых личных историй в повесть.
+Вискарь, как и она, больше не берёт:
+один — меня, другая — трубку, и я просто жду свой скорый поезд.
+Вот-вот оставит вам слабак вокзал,
+так и не выдав в явь то, что писал в блокнот ради вранья.
+А помнишь, тучи воронья кружили под рояль,
+и я в минорный тон, слегка стесняясь, вам слова вонзал?
+Я выпаду ливнями в отпуск.
+Ты знаешь, что я поджидаю.
+И в трубку доносится возглас
+громких гудков, что нас предупреждают.
+Ты слышишь, как просится сердце домой —
+я слышу диез и бемоль. Мы проходим контроль
+над собой. Вот секреты Эдема:
+ты слышишь гудки — это так плачет Эмма.
+
+Я знаю, что ты не спасёшь меня,
+и распадаюсь под этот мотив.
+Ты знаешь, что всё это — ложь, и я
+слышу под рёбрами локомотив.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sub-tab-panel" data-track="3">
+                        <div class="track-credits">
+                            <p><span class="credit-label">Текст:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Музыка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Запись:</span> <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a></p>
+                            <p><span class="credit-label">Сведение:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Мастеринг:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                        </div>
+                        <div class="song-lyrics">
+                            <p>
+Я не раз засыпал под "алло" –
+ты не раз просыпалась со мной.
+Отправляя дым под потолок,
+я придумывал, что же мне сделать с собой.
+Ты знаешь, где меня искать —
+я знаю, где с тобой можно пить и спать.
+У тебя хорошее высшее, чёткое нижнее,
+а мы дышали на ладан тут и еле выжили.
+Спроси себя, ничего там ни прогнило ли,
+когда легла под него и, причём, по собственной воле?
+Что, ты в порядке? В зоне комфорта? В зоне покоя?
+Слоняться между коек, не зная, что это такое?
+Это тянет тебя под дождь,
+несмотря на следы от твоих подошв.
+Никому не говори, лучше зарой ту тайну:
+знаешь прайс — набирай, я — герой по найму.
+
+Уже не прислоняется, но ещё тянется
+к трубке, ведь там в номерах её пьяница.
+Это стало весомой деталью:
+он не герой, и совсем не по найму.
+Она пятится и пока тянется
+к трубке, ведь там в номерах её пьяница.
+Она врёт всем довольно умело,
+что больше не знает, где Уолтер Мелон.
+
+Я застрял в деташе — появилось легато.
+Пьяный ум ведет не навигатор —
+это те места, где из карманов порхают
+железные бабочки на фумигатор.
+Мысли теряют стаканчики.
+Дальше — в трамвае, случайно попавшись им, —
+я практически трезв, и я вижу, что Аничков
+точно такой же, как Павшинский.
+Это романтика — вот мой район:
+солнце жжёт и пытает людей-муравьев.
+Мы нарочно наврём то, что это — любовь,
+хоть опять у обоих в груди подгниёт.
+Это вовсе не факт, но это тянет тебя ко мне,
+хоть давно и внутри я окаменел.
+Это просто бардак в умах
+из-за букв моих бумаг.
+
+Уже не прислоняется, но ещё тянется
+к трубке, ведь там в номерах её пьяница.
+Это стало весомой деталью:
+он не герой, и совсем не по найму.
+Она пятится и пока тянется
+к трубке, ведь там в номерах её пьяница.
+Она врёт всем довольно умело,
+что больше не знает, где Уолтер Мелон.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sub-tab-panel" data-track="4">
+                        <div class="track-credits">
+                            <p><span class="credit-label">Текст:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Музыка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Запись:</span> <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a></p>
+                            <p><span class="credit-label">Сведение:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Мастеринг:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                        </div>
+                        <div class="song-lyrics">
+                            <p>
+Знаешь, я так боюсь, что внутри немного вьюжит,
+но жду тебя всю жизнь свою, похожую на фьюжн.
+Мне очень нужен кто-то в помощь, чтоб найти жемчужин:
+я потратил пару дюжин лет на поиск клада в луже.
+Не знаю, где я притворяюсь, дома или тут,
+и всё это заставляет меня думать налету.
+Этот мир такой чудной, я готов был закончить в ноль.
+Я расскажу тебе, только давай не тут.
+Мне нравился мир, где не видно ни зги,
+да и проще жилось мне голодному, голому.
+Сердце — предатель, стучится в виски
+и зачем-то опять игнорирует голову.
+Я боюсь оставаться один:
+табуретка, ремень, высота, ЦИАТИМ.
+Я не хочу, чтоб ты чувствовал себя также, дабы
+ты не был один, с тобою страхи папы.
+
+Я знаю, в чём ты видишь странность,
+и всё это тут для тебя.
+Я знаю, сколько нам осталось,
+но, честно говоря…
+Тут кто-то мёртв, а кто-то не жив.
+И так день за днём: один и тот же режим.
+Ты не при чём, просто тебе так предрекалось,
+так что добро пожаловать в нашу семейку Аддамс.
+
+Каждый день — открытие, ты столького не видел. И,
+возможно, это плюс, но скорость требует быть в лидерах.
+Чуть позже будет практика, пока оставлю в литерах:
+люди уходят быстро, и быстрей всего — родители.
+Я как-то ненавидел и школу, и универ:
+и там, и там хотелось пешком и прям по Неве.
+И даже как-то зарекался, что больше я не боюсь,
+когда мне дали лекарства, и я снова пропил курс.
+Я тебе не пример, но точно буду стеной,
+хотя порой я заливаю крепкими слабости в ноль –
+этот способ ещё дышит, я был под солнцем остывшим.
+И, клянусь, ты не избавишься от сосок и пустышек.
+Ты — это после меня. Ты — это мой новый мир.
+Ты — это "сложно кому-то", и ты же — "сложно самим".
+Я даю клятву, пусть немного запоздалую:
+твоя жизнь будет лучше жизней тех, кто тебе дал её.
+
+Я знаю, в чём ты видишь странность,
+и всё это тут для тебя.
+Я знаю, сколько нам осталось,
+но, честно говоря…
+Тут кто-то мёртв, а кто-то не жив.
+И так день за днём: один и тот же режим.
+Ты не при чём, просто тебе так предрекалось,
+так что добро пожаловать в нашу семейку Аддамс.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sub-tab-panel" data-track="5">
+                        <div class="track-credits">
+                            <p><span class="credit-label">Текст:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a>, <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a></p>
+                            <p><span class="credit-label">Музыка:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Запись:</span> <a href="https://vk.ru/ohmyghost" target="_blank">Canterville</a></p>
+                            <p><span class="credit-label">Сведение:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                            <p><span class="credit-label">Мастеринг:</span> <a href="https://vk.ru/andreytrabl" target="_blank">Андрей Трабл</a></p>
+                        </div>
+                        <div class="song-lyrics">
+                            <p>
+Ноги подведут к «Клубу 27»:
+тебя это устрашит, когда меня развеселит.
+Не сделав из нас элит, но пригласив с собой Лилит,
+мне останется лишь только отказаться от семьи.
+Музыка — как тюрьма, и я в ней — вечный арестант.
+Прохавав столько дерьма, я пытался нажать рестарт,
+но всё на своих местах. И я всё это к тому,
+что уж лучше подохнуть первым, чем остаться одному.
+
+Ноги подведут к «Клубу 27».
+Я прячусь в клубе дыма, но пойман в твоих глазах.
+Я схожу с ума и не знаю, куда идти,
+но я покажу тебе, каким бывает страх.
+
+Ты пьёшь горячий шоколад и залипаешь в Instagram —
+у меня в котелке бардак, ведь философы не спиздят.
+Это самый быстрый путь, чтобы умереть на двоих.
+Так шутишь, я не могу, но я вырезаю эфир.
+Это так странно, ведь ты питаешь слабость,
+хотя меня не знаешь. Может, не существуешь,
+и я режу нежно чокер, прям как Руки-ножницы.
+Палю, как снимает Бёртон, а ты платье, это стиль.
+
+Ноги подведут к «Клубу 27».
+Я прячусь в клубе дыма, но пойман в твоих глазах.
+Я схожу с ума и не знаю, куда идти,
+но я покажу тебе, каким бывает страх.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="back-button" onclick="history.back()" style="font-size: 0.9rem; padding: 10px 30px;">← НАЗАД</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer" style="margin-top: 40px;">
+        <div class="container footer-container">
+            <p class="footer-copy"> *Instagram и Facebook признаны экстремистскими организациями и запрещены на территории РФ.</p>
+            <p class="footer-copy">&copy; 2026 Андрей Трабл. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        const burger = document.getElementById('burgerBtn');
+        const nav = document.querySelector('.main-nav');
+        burger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                nav.classList.remove('open');
+            });
+        });
+
+        // Основные вкладки СЛУШАТЬ / ТЕКСТ
+        const songTabBtns = document.querySelectorAll('.song-tab-btn');
+        const songTabPanels = document.querySelectorAll('.song-tab-panel');
+        songTabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                songTabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const tab = this.dataset.tab;
+                songTabPanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    if (panel.dataset.tab === tab) {
+                        panel.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Подвкладки для треков внутри вкладки ТЕКСТ
+        const subTabBtns = document.querySelectorAll('.sub-tab-btn');
+        const subTabPanels = document.querySelectorAll('.sub-tab-panel');
+        subTabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                subTabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const track = this.dataset.track;
+                subTabPanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    if (panel.dataset.track === track) {
+                        panel.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
