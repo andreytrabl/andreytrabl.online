@@ -661,9 +661,22 @@ ul {
     border-color: rgba(var(--accent-rgb), 0.3);
 }
 
-.clip-item iframe {
+/* Обёртка видео: держит соотношение сторон 16:9 всегда одинаковым,
+   независимо от того, какие width/height прописаны у самого iframe */
+.clip-video {
+    position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    padding-top: 56.25%; /* 9 / 16 * 100% — это и есть пропорция 16:9 */
+    overflow: hidden;
+}
+
+/* Сам iframe растягивается на всю обёртку и не влияет на её размер */
+.clip-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
     display: block;
 }
