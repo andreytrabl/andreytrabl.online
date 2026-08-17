@@ -641,6 +641,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    align-items: start;   /* ← добавь эту строку */
 }
 
 .clip-item {
