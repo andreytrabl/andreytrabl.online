@@ -282,6 +282,36 @@ ul {
     animation: heroFadeUp 1s ease both;
 }
 
+/* ===== ИКОНКИ СОЦСЕТЕЙ НА ГЛАВНОЙ (над кнопками стриминговых сервисов) ===== */
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0 0;
+}
+
+.hero-socials a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.hero-socials a:hover {
+    transform: scale(1.1);
+}
+
+.hero-socials img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.hero-socials a:hover img {
+    filter: brightness(1);
+}
+
 /* ===== КНОПКИ СТРИМИНГОВ НА ГЛАВНОЙ ===== */
 .hero-services {
     display: flex;
@@ -1172,6 +1202,13 @@ ul {
     .hero-services {
         gap: 15px;
     }
+    .hero-socials img {
+        width: 40px;
+        height: 40px;
+    }
+    .hero-socials {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1262,6 +1299,13 @@ ul {
         height: 36px;
     }
     .hero-services {
+        gap: 12px;
+    }
+    .hero-socials img {
+        width: 36px;
+        height: 36px;
+    }
+    .hero-socials {
         gap: 12px;
     }
 }
