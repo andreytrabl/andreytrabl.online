@@ -6,19 +6,6 @@
     <title>Андрей Трабл</title>
     <link rel="icon" href="favicon.png" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
-    
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111863861', 'ym');
-
-    ym(111863861, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/111863861" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
 </head>
 <body>
 
@@ -38,6 +25,21 @@
         <div class="modal-window error-window">
             <h2 class="modal-title">не то, зайка))0)0</h2>
             <button class="modal-btn modal-btn-ok" id="btnOk">ОК</button>
+        </div>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Уведомление об использовании cookie">
+        <div class="cookie-banner-inner container">
+            <p class="cookie-banner-text">
+                Мы используем файлы cookie и сервис аналитики «Яндекс.Метрика» для улучшения работы сайта и анализа посещаемости. Счётчик аналитики включается только после вашего согласия. Подробнее — в
+                <a href="privacy.html" class="cookie-banner-link">Политике конфиденциальности</a>
+                и
+                <a href="cookies.html" class="cookie-banner-link">Политике использования cookie</a>.
+            </p>
+            <div class="cookie-banner-actions">
+                <button type="button" class="cookie-btn cookie-btn-decline" id="cookieDecline">Отклонить</button>
+                <button type="button" class="cookie-btn cookie-btn-accept" id="cookieAccept">Принять</button>
+            </div>
         </div>
     </div>
 
@@ -309,6 +311,13 @@
             <div class="container footer-container">
                 <p class="footer-copy"> *Instagram и Facebook признаны экстремистскими организациями и запрещены на территории РФ.</p>
                 <p class="footer-copy">&copy; 2026 Андрей Трабл. Все права защищены.</p>
+                <p class="footer-legal-links">
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="cookies.html">Использование cookie</a>
+                    <span aria-hidden="true">·</span>
+                    <button type="button" class="footer-cookie-settings" id="cookieSettingsBtn">Настройки cookie</button>
+                </p>
             </div>
         </footer>
     </div>
@@ -394,6 +403,81 @@
             const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             scrollProgress.style.width = progress + '%';
         }, { passive: true });
+    </script>
+
+    <script>
+        (function () {
+            var YM_ID = 111863861;
+            var CONSENT_KEY = 'cookieConsent'; // 'accepted' | 'declined'
+
+            function loadYandexMetrika() {
+                if (window.__ymLoaded) return;
+                window.__ymLoaded = true;
+
+                (function (m, e, t, r, i, k, a) {
+                    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+                    m[i].l = 1 * new Date();
+                    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+                    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+                })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=' + YM_ID, 'ym');
+
+                window.ym(YM_ID, 'init', {
+                    ssr: true,
+                    webvisor: true,
+                    clickmap: true,
+                    ecommerce: 'dataLayer',
+                    referrer: document.referrer,
+                    url: location.href,
+                    accurateTrackBounce: true,
+                    trackLinks: true
+                });
+            }
+
+            function getConsent() {
+                try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+            }
+            function setConsent(value) {
+                try { localStorage.setItem(CONSENT_KEY, value); } catch (e) { /* хранилище недоступно — баннер будет показываться повторно */ }
+            }
+
+            var banner = document.getElementById('cookieBanner');
+            var acceptBtn = document.getElementById('cookieAccept');
+            var declineBtn = document.getElementById('cookieDecline');
+            var settingsBtn = document.getElementById('cookieSettingsBtn');
+
+            function showBanner() {
+                if (banner) banner.classList.add('is-visible');
+            }
+            function hideBanner() {
+                if (banner) banner.classList.remove('is-visible');
+            }
+
+            var consent = getConsent();
+            if (consent === 'accepted') {
+                loadYandexMetrika();
+            } else if (consent !== 'declined') {
+                showBanner();
+            }
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function () {
+                    setConsent('accepted');
+                    hideBanner();
+                    loadYandexMetrika();
+                });
+            }
+            if (declineBtn) {
+                declineBtn.addEventListener('click', function () {
+                    setConsent('declined');
+                    hideBanner();
+                });
+            }
+            if (settingsBtn) {
+                settingsBtn.addEventListener('click', function () {
+                    showBanner();
+                });
+            }
+        })();
     </script>
 
 </body>
