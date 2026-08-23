@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Использование cookie — Андрей Трабл</title>
+    <link rel="icon" href="favicon.png" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="burger" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#songs">Песни</a></li>
+                    <li><a href="index.html#clips">Клипы</a></li>
+                    <li><a href="index.html#studio">Студия</a></li>
+                    <li><a href="index.html#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="legal-page">
+            <div class="container">
+                <a href="index.html" class="legal-back">← На главную</a>
+                <h1 class="legal-title">Политика использования файлов cookie</h1>
+                <p class="legal-updated">Дата последнего обновления: 23 августа 2026 г.</p>
+
+                <div class="legal-content">
+                    <p>
+                        Настоящая Политика описывает, какие файлы cookie и аналогичные технологии
+                        использует сайт <strong>andreytrabl.online</strong>
+                        (далее — «Сайт»), для каких целей и как ими управлять. Политика является
+                        приложением к <a href="privacy.html">Политике конфиденциальности</a> и
+                        разработана с учётом требований Федерального закона от 27.07.2006 № 152-ФЗ
+                        «О персональных данных» и разъяснений Роскомнадзора об использовании cookie.
+                    </p>
+
+                    <h2>1. Что такое cookie</h2>
+                    <p>
+                        Cookie — это небольшие текстовые файлы, которые сохраняются в браузере
+                        пользователя при посещении сайта и позволяют запоминать настройки и действия
+                        пользователя, а также собирать статистику посещений.
+                    </p>
+
+                    <h2>2. Какие cookie использует Сайт</h2>
+                    <p><strong>Строго необходимые (технические)</strong></p>
+                    <p>
+                        Обеспечивают базовую работу Сайта (например, запоминание того, что стартовое
+                        всплывающее окно уже показывалось в рамках текущей сессии). Такие технологии не
+                        требуют согласия пользователя и не могут быть отключены через настройки Сайта,
+                        так как без них сайт не будет работать корректно.
+                    </p>
+                    <p><strong>Аналитические (требуют согласия)</strong></p>
+                    <p>
+                        Сайт использует сервис веб-аналитики <strong>«Яндекс.Метрика»</strong>
+                        (счётчик № 111863861), который устанавливает собственные cookie и собирает
+                        обезличенные данные о посещениях: страницы, длительность визита, источники
+                        переходов, тип устройства, а также — при включённом Вебвизоре — запись действий
+                        на странице. Эти данные используются исключительно для анализа посещаемости и
+                        улучшения Сайта.
+                    </p>
+                    <p>
+                        Счётчик «Яндекс.Метрики» загружается и начинает работу <strong>только после
+                        того, как пользователь нажал «Принять» в cookie-баннере</strong> либо ранее уже
+                        дал согласие. До получения согласия соответствующие скрипты не запускаются.
+                    </p>
+
+                    <h2>3. Как получить и отозвать согласие</h2>
+                    <p>
+                        При первом посещении Сайта пользователю показывается баннер с предложением
+                        принять или отклонить использование аналитических cookie. Выбор пользователя
+                        сохраняется в его браузере (localStorage).
+                    </p>
+                    <p>
+                        Изменить ранее сделанный выбор можно в любой момент, нажав ссылку
+                        «Настройки cookie» в подвале Сайта — баннер откроется повторно, и можно будет
+                        выбрать другой вариант. Также согласие можно отозвать, удалив данные сайта
+                        (cookie и локальное хранилище) в настройках браузера.
+                    </p>
+
+                    <h2>4. Третьи лица</h2>
+                    <p>
+                        Аналитические cookie устанавливаются сервисом ООО «Яндекс». Обработка данных
+                        в рамках сервиса «Яндекс.Метрика» осуществляется в соответствии с
+                        <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener noreferrer">политикой конфиденциальности Яндекса</a>
+                        и
+                        <a href="https://yandex.ru/legal/metrica_agreement/" target="_blank" rel="noopener noreferrer">условиями использования Яндекс.Метрики</a>.
+                    </p>
+
+                    <h2>5. Управление cookie через браузер</h2>
+                    <p>
+                        Помимо настроек Сайта, пользователь может управлять cookie на уровне браузера:
+                        блокировать их приём, удалять уже сохранённые файлы или получать уведомления при
+                        их установке. Обратите внимание, что полное отключение cookie в браузере может
+                        повлиять на работу отдельных функций Сайта.
+                    </p>
+
+                    <h2>6. Контакты</h2>
+                    <p>
+                        Вопросы по данной Политике можно направить на адрес:
+                        <span class="legal-placeholder">andreytrabl@mail.ru</span>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container footer-container">
+                <p class="footer-copy"> *Instagram и Facebook признаны экстремистскими организациями и запрещены на территории РФ.</p>
+                <p class="footer-copy">&copy; 2026 Андрей Трабл. Все права защищены.</p>
+                <p class="footer-legal-links">
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="cookies.html">Использование cookie</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const burger = document.getElementById('burgerBtn');
+        const nav = document.querySelector('.main-nav');
+        burger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                nav.classList.remove('open');
+            });
+        });
+
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
