@@ -16,7 +16,7 @@
   - в `assets/songs/`: `<script src="../../assets/js/consent.js"></script>`
 - В подвале — ссылки на политику, cookie и кнопка `id="cookieSettingsBtn"` «Настройки cookie».
 - Новая страница песни: копировать существующую из `assets/songs/` и менять только содержание. Стили — в `assets/css/song.css`, не инлайном.
-  - Страница песни — без вкладок, всё друг под другом внутри `<div class="release">`: `.song-detail` (обложка, артист, название, стриминги) → `.release-text` (кредиты + текст) → при наличии `.release-clip` (клип).
+  - Страница песни — без вкладок, всё друг под другом внутри `<div class="release">`: `.song-detail` (обложка, артист, название, стриминги) → при наличии `.release-clip` (клип) → `.release-text` (кредиты + текст).
   - Релиз из нескольких треков (пример: `dtl.html`): `<div class="release release--multi">`, между `.song-detail` и `.release-text` — `<nav class="sub-tabs">` с кнопками `.sub-tab-btn[data-track]`, тексты в `.sub-tab-panel[data-track]`. На ПК это треклист слева, на мобильных — кнопки над текстом.
   - Текст песни внутри `.song-lyrics <p>` выводится с `white-space: pre-wrap` — не менять отступы строк.
 - Фоновое видео — ТОЛЬКО на главной. На страницах песен его нет.
