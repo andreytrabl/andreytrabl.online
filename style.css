@@ -677,22 +677,7 @@ ul {
     position: relative;
 }
 
-.close-song {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    font-size: 2.2rem;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    line-height: 1;
-}
 
-.close-song:hover {
-    color: #ffffff;
-}
 
 .song-detail {
     text-align: center;
@@ -961,10 +946,6 @@ ul {
         width: 40px;
         height: 40px;
     }
-    .close-song {
-        font-size: 1.8rem;
-        right: 10px;
-    }
     .song-page {
         padding-top: 100px;
         padding-bottom: 60px;
@@ -976,13 +957,6 @@ ul {
         white-space: pre-wrap;
         word-break: break-word;
         overflow-x: hidden;
-    }
-    .navigation-buttons .back-button {
-        display: none !important;
-    }
-    .navigation-buttons {
-        right: 10px;
-        gap: 5px;
     }
     .hero-wrapper {
         padding: 80px 20px 30px;
@@ -1053,13 +1027,6 @@ ul {
     .song-page {
         padding-top: 100px;
         padding-bottom: 40px;
-    }
-    .navigation-buttons {
-        right: 5px;
-        gap: 3px;
-    }
-    .close-song {
-        font-size: 1.5rem !important;
     }
 
     .modal-window {

@@ -1,4 +1,32 @@
 /* Общие стили страниц песен (assets/songs/*.html) */
+
+/* Шапка: единственная кнопка «← На главную» */
+.header-container--song {
+    justify-content: flex-start;
+}
+.home-link {
+    display: inline-block;
+    font-family: 'Benzin Bold', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+.home-link:hover {
+    color: #0a0a0a;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+@media (max-width: 480px) {
+    .home-link {
+        font-size: 0.7rem;
+        padding: 7px 16px;
+    }
+}
 .song-lyrics {
     max-width: 100% !important;
     text-align: left !important;
@@ -10,51 +38,8 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
-.back-button {
-    display: inline-block;
-    font-family: 'Benzin Bold', sans-serif;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 16px;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 30px;
-    color: rgba(255,255,255,0.7);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin-right: 15px;
-}
-.back-button:hover {
-    background: rgba(255,255,255,0.1);
-    color: #ffffff;
-    border-color: #ffffff;
-}
 .song-page .container {
     position: relative;
-}
-.navigation-buttons {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.close-song {
-    position: static !important;
-    font-size: 2.2rem;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    line-height: 1;
-    transition: color 0.3s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-.close-song:hover {
-    color: #ffffff;
 }
 
 .sub-tabs {
@@ -173,13 +158,6 @@
 }
 
 @media (max-width: 768px) {
-    .navigation-buttons {
-        right: 10px;
-        gap: 5px;
-    }
-    .close-song {
-        font-size: 1.8rem;
-    }
     .song-lyrics {
         padding: 0 10px !important;
     }
@@ -198,9 +176,6 @@
     }
 }
 @media (max-width: 480px) {
-    .close-song {
-        font-size: 1.5rem;
-    }
     .sub-tab-btn {
         font-size: 0.65rem;
         padding: 3px 10px;

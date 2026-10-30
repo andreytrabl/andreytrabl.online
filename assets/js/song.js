@@ -1,17 +1,4 @@
-// Общий скрипт страниц песен: меню и треклист релизов с несколькими треками
-const burger = document.getElementById('burgerBtn');
-const nav = document.querySelector('.main-nav');
-burger.addEventListener('click', function() {
-    this.classList.toggle('active');
-    nav.classList.toggle('open');
-});
-document.querySelectorAll('.nav-list a').forEach(link => {
-    link.addEventListener('click', () => {
-        burger.classList.remove('active');
-        nav.classList.remove('open');
-    });
-});
-
+// Общий скрипт страниц песен: переключение треков у релизов с несколькими треками
 // Переключение треков (кнопки .sub-tab-btn / панели .sub-tab-panel)
 const subTabBtns = document.querySelectorAll('.sub-tab-btn');
 const subTabPanels = document.querySelectorAll('.sub-tab-panel');
