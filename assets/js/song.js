@@ -1,4 +1,4 @@
-// Общий скрипт страниц песен: меню, вкладки СЛУШАТЬ/КЛИП/ТЕКСТ, подвкладки треков
+// Общий скрипт страниц песен: меню и треклист релизов с несколькими треками
 const burger = document.getElementById('burgerBtn');
 const nav = document.querySelector('.main-nav');
 burger.addEventListener('click', function() {
@@ -12,36 +12,21 @@ document.querySelectorAll('.nav-list a').forEach(link => {
     });
 });
 
-// Основные вкладки СЛУШАТЬ / ТЕКСТ
-const songTabBtns = document.querySelectorAll('.song-tab-btn');
-const songTabPanels = document.querySelectorAll('.song-tab-panel');
-songTabBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-        songTabBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const tab = this.dataset.tab;
-        songTabPanels.forEach(panel => {
-            panel.classList.remove('active');
-            if (panel.dataset.tab === tab) {
-                panel.classList.add('active');
-            }
-        });
-    });
-});
-
-// Подвкладки для треков внутри вкладки ТЕКСТ
+// Переключение треков (кнопки .sub-tab-btn / панели .sub-tab-panel)
 const subTabBtns = document.querySelectorAll('.sub-tab-btn');
 const subTabPanels = document.querySelectorAll('.sub-tab-panel');
+const releaseText = document.querySelector('.release-text');
 subTabBtns.forEach(btn => {
     btn.addEventListener('click', function() {
         subTabBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         const track = this.dataset.track;
         subTabPanels.forEach(panel => {
-            panel.classList.remove('active');
-            if (panel.dataset.track === track) {
-                panel.classList.add('active');
-            }
+            panel.classList.toggle('active', panel.dataset.track === track);
         });
+        // если начало текста ушло выше экрана — вернуть к началу текста трека
+        if (releaseText && releaseText.getBoundingClientRect().top < 80) {
+            releaseText.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });

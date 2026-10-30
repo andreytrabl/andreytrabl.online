@@ -7,7 +7,7 @@
 - `assets/songs/*.html` — страницы песен/релизов, все на одном шаблоне
 - `privacy.html`, `cookies.html` — юридические страницы
 - `style.css` — общие стили сайта
-- `assets/css/song.css`, `assets/js/song.js` — общие стили и скрипт страниц песен (вкладки, подвкладки треков, меню)
+- `assets/css/song.css`, `assets/js/song.js` — общие стили и скрипт страниц песен (меню, переключение треков)
 - `assets/js/consent.js` — cookie-баннер + Яндекс.Метрика (счётчик 111863861, грузится только после согласия)
 
 ## Правила для каждой страницы (в т.ч. новых)
@@ -16,6 +16,10 @@
   - в `assets/songs/`: `<script src="../../assets/js/consent.js"></script>`
 - В подвале — ссылки на политику, cookie и кнопка `id="cookieSettingsBtn"` «Настройки cookie».
 - Новая страница песни: копировать существующую из `assets/songs/` и менять только содержание. Стили — в `assets/css/song.css`, не инлайном.
+  - Страница песни — без вкладок, всё друг под другом внутри `<div class="release">`: `.song-detail` (обложка, артист, название, стриминги) → `.release-text` (кредиты + текст) → при наличии `.release-clip` (клип).
+  - Релиз из нескольких треков (пример: `dtl.html`): `<div class="release release--multi">`, между `.song-detail` и `.release-text` — `<nav class="sub-tabs">` с кнопками `.sub-tab-btn[data-track]`, тексты в `.sub-tab-panel[data-track]`. На ПК это треклист слева, на мобильных — кнопки над текстом.
+  - Текст песни внутри `.song-lyrics <p>` выводится с `white-space: pre-wrap` — не менять отступы строк.
+- Фоновое видео — ТОЛЬКО на главной. На страницах песен его нет.
 - Внешние ссылки: `target="_blank" rel="noopener noreferrer"`.
 
 ## Медиа

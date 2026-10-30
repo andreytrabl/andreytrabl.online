@@ -212,3 +212,110 @@
         min-width: 70px;
     }
 }
+
+/* ===== Релиз: одна страница без вкладок ===== */
+.release {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.release-text {
+    margin-top: 50px;
+    scroll-margin-top: 100px;
+}
+.release > .sub-tabs {
+    margin: 50px 0 0;
+}
+.release > .sub-tabs + .release-text {
+    margin-top: 20px;
+}
+.release-clip {
+    margin-top: 50px;
+}
+.release-clip-title {
+    font-family: 'Benzin Bold', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ===== ПК: треклист слева у релизов с несколькими треками ===== */
+@media (min-width: 992px) {
+    .release--multi {
+        max-width: 1160px;
+        display: grid;
+        grid-template-columns: 270px minmax(0, 1fr);
+        column-gap: 50px;
+        align-items: start;
+    }
+    .release--multi > .song-detail,
+    .release--multi > .release-text,
+    .release--multi > .release-clip {
+        grid-column: 2;
+    }
+    .release--multi > .sub-tabs {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        position: sticky;
+        top: 100px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 2px;
+        padding: 18px 10px;
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        max-height: calc(100vh - 130px);
+        overflow-y: auto;
+        counter-reset: track;
+    }
+    .release--multi > .sub-tabs::before {
+        content: 'Треклист';
+        font-family: 'Benzin Bold', sans-serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.4);
+        padding: 0 12px 10px;
+    }
+    .release--multi > .sub-tabs .sub-tab-btn {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+        white-space: normal;
+        line-height: 1.35;
+        font-size: 0.75rem;
+        padding: 10px 12px;
+        border: none;
+        border-left: 2px solid transparent;
+        border-radius: 6px;
+        background: transparent;
+        backdrop-filter: none;
+    }
+    .release--multi > .sub-tabs .sub-tab-btn::before {
+        counter-increment: track;
+        content: counter(track, decimal-leading-zero);
+        flex: 0 0 auto;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.3);
+    }
+    .release--multi > .sub-tabs .sub-tab-btn:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    .release--multi > .sub-tabs .sub-tab-btn.active {
+        color: #ffffff;
+        background: rgba(var(--accent-rgb), 0.08);
+        border-left-color: var(--accent);
+    }
+    .release--multi > .sub-tabs .sub-tab-btn.active::before {
+        color: var(--accent);
+    }
+}

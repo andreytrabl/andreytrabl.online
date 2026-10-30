@@ -694,46 +694,6 @@ ul {
     color: #ffffff;
 }
 
-.song-page-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.song-tab-btn {
-    font-family: 'Benzin Bold', sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 8px 30px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(0, 0, 0, 0.4);
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-    backdrop-filter: blur(4px);
-}
-
-.song-tab-btn:hover {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.song-tab-btn.active {
-    color: #ffffff;
-    border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.song-tab-panel {
-    display: none;
-}
-.song-tab-panel.active {
-    display: block;
-}
-
 .song-detail {
     text-align: center;
     max-width: 500px;
@@ -1001,13 +961,6 @@ ul {
         width: 40px;
         height: 40px;
     }
-    .song-page-tabs {
-        gap: 10px;
-    }
-    .song-tab-btn {
-        font-size: 0.8rem;
-        padding: 6px 20px;
-    }
     .close-song {
         font-size: 1.8rem;
         right: 10px;
@@ -1089,11 +1042,6 @@ ul {
     .song-services img {
         width: 36px;
         height: 36px;
-    }
-    .song-tab-btn {
-        font-size: 0.7rem;
-        padding: 4px 14px;
-        letter-spacing: 1px;
     }
     .song-lyrics {
         font-size: 0.9rem;
