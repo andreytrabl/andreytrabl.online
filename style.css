@@ -342,44 +342,8 @@ ul {
     filter: brightness(1);
 }
 
-.cta-button {
-    display: inline-block;
-    font-family: 'Benzin Bold', sans-serif;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 16px 40px;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    background: transparent;
-    transition: all 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    animation: heroFadeUp 1s ease 0.2s both;
-    border-radius: 50px;
-}
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, var(--accent), #ffffff);
-    transition: left 0.4s ease;
-    z-index: -1;
-}
 
-.cta-button:hover {
-    color: #0a0a0a;
-    border-color: var(--accent);
-    box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.35);
-}
-.cta-button:hover::before {
-    left: 0;
-}
 
 @keyframes heroFadeUp {
     from {
@@ -984,10 +948,6 @@ ul {
     .hero-logo {
         max-width: 375px;
     }
-    .cta-button {
-        padding: 12px 24px;
-        font-size: 0.7rem;
-    }
     .hero-scroll {
         display: none;
     }
@@ -1086,10 +1046,6 @@ ul {
     }
     .hero-logo {
         max-width: 300px;
-    }
-    .cta-button {
-        padding: 10px 16px;
-        font-size: 0.6rem;
     }
     .song-lyrics {
         padding: 0 5px !important;
@@ -1206,7 +1162,6 @@ ul {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-logo,
-    .cta-button,
     .modal-window {
         animation: none !important;
     }

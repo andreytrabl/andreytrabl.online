@@ -48,7 +48,7 @@
     </header>
 
     <section class="hero" id="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg">
             <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
@@ -98,10 +98,6 @@
                         <img src="assets/icons/spotify.png" alt="Spotify" />
                     </a>
                 </div>
-
-                <a href="https://vk.com/andreytrabl" target="_blank" class="cta-button" rel="noopener noreferrer">
-                    Вступить в тайное сообщество
-                </a>
             </div>
             <div class="hero-scroll">
                 <span></span>
@@ -412,6 +408,19 @@
     </div>
 
     <script>
+        // Фоновое видео: страховка автозапуска на iOS/Android
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) {
+            heroVideo.muted = true;
+            const tryPlay = () => { const p = heroVideo.play(); if (p && p.catch) p.catch(() => {}); };
+            tryPlay();
+            heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+            ['touchstart', 'scroll', 'click'].forEach(ev =>
+                window.addEventListener(ev, () => { if (heroVideo.paused) tryPlay(); }, { once: true, passive: true })
+            );
+            document.addEventListener('visibilitychange', () => { if (!document.hidden && heroVideo.paused) tryPlay(); });
+        }
+
         const burger = document.getElementById('burgerBtn');
         const nav = document.querySelector('.main-nav');
         burger.addEventListener('click', function() {
